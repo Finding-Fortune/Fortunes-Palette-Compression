@@ -1,8 +1,8 @@
 # Fortune's Palette Compression
 
-This library provides a **fast palette compression implementation** for C++ in a single, header-only file. Simply drag and drop the `palette.hpp` file into your project, and you're good to go!
+This library provides a **fast palette compression implementation** for C++ in a single, header-only file. Simply drag and drop the `palette.hpp` file located in the `src folder` into your project, and you're good to go!
 
-You can see how to use the library in action in the `main.cpp` file.
+You can see how to use the library in action in the `src/main.cpp` file.
 
 ---
 
