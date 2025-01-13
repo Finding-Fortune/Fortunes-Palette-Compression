@@ -33,7 +33,7 @@ void main() {
     const int x = 3, y = 7, z = 10;
     uncompressedVector[y + (x * vectorDiameter) + (z * vectorDiameter * vectorDiameter)] = 25; 
 
-    // Now palette compress our vector, passing in our uncompressed vector
+    // Now palette compress our uncompressed vector
     paletteCompression.PaletteCompressVector(uncompressedVector);
 
     // Modify a value in the still compressed vector to 4
