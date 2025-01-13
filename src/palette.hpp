@@ -5,11 +5,17 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <cstdint>
 
 
 
 namespace Fort
 {
+
+// Change the RETURN_TYPE to whatever is needed for compression
+using RETURN_TYPE = uint16_t;
+
+
 
 struct PaletteCompressedBlocks
 {
@@ -20,9 +26,9 @@ struct PaletteCompressedBlocks
     // Each index in PaletteToBlockID maps a bit compressed block to an actual block ID.
     // I.E. if index 0 is equal to the block ID for grass, then if a compressed bit section in compressedBlocks
     // is equal to 0, it is a grass block.
-    std::vector<uint16_t> PaletteToBlockID;
+    std::vector<RETURN_TYPE> PaletteToBlockID;
     // And reverse. Given a BlockID, determine what its ID is bit compressed
-    std::map<uint16_t, unsigned int> BlockToPalette;
+    std::map<RETURN_TYPE, unsigned int> BlockToPalette;
 };
 
 
@@ -43,7 +49,7 @@ public:
         std::cout << "Palette instance created.\n";
     }
 
-    void PaletteCompressVector(std::vector<uint16_t>& uncompressedBlocks)
+    void PaletteCompressVector(std::vector<RETURN_TYPE>& uncompressedBlocks)
     {
         blocks.compressedBlocks.clear();
         blocks.PaletteToBlockID.clear();
@@ -59,7 +65,7 @@ public:
         auto& compressedBlocksRef = blocks.compressedBlocks;
 
         // Get the unique block IDs in chunk
-        std::set<uint16_t> uniqueBlocks;
+        std::set<RETURN_TYPE> uniqueBlocks;
         for (const uint8_t block : uncompressedBlocks) 
         {
             uniqueBlocks.insert(block);
@@ -95,7 +101,7 @@ public:
         compressedBlocksRef.reserve((uncompressedBlocks.size() + blocksPerInt - 1) / blocksPerInt);
 
         // Actually loop through and do the compression now
-        for (const uint16_t block : uncompressedBlocks) 
+        for (const RETURN_TYPE block : uncompressedBlocks) 
         {
             if (blocksPerIntCount == blocksPerInt) 
             {
@@ -121,7 +127,7 @@ public:
 
 
 
-    void DecompressVector(std::vector<uint16_t>& uncompressedBlocks)
+    void DecompressVector(std::vector<RETURN_TYPE>& uncompressedBlocks)
     {
         const unsigned int maxChunkSize = vectorVolume;
 
@@ -143,7 +149,7 @@ public:
 
 
 
-    uint16_t GetNum(const uint8_t x, const uint8_t y, const uint8_t z) const noexcept
+    RETURN_TYPE GetNum(const uint8_t x, const uint8_t y, const uint8_t z) const noexcept
     {
         if(blocks.SingleBlockTypeID != -1) return blocks.SingleBlockTypeID;
         else 
@@ -167,7 +173,7 @@ public:
         }
     }
 
-    void SetNum(const uint8_t x, const uint8_t y, const uint8_t z, const uint16_t newNum)
+    void SetNum(const uint8_t x, const uint8_t y, const uint8_t z, const RETURN_TYPE newNum)
     {
         const unsigned int index = y + (x * vectorDiameter) + (z * vectorArea);
         const unsigned int paletteSize = blocks.PaletteToBlockID.size(); // Ensure this represents the number of unique block types
