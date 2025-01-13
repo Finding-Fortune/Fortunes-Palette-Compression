@@ -47,6 +47,8 @@ void main() {
     // Print out results
     std::cout << uncompressedVector[y +  (x * vectorDiameter) +  (z * vectorDiameter * vectorDiameter)];  // 25
     std::cout << uncompressedVector[y2 + (x2 * vectorDiameter) + (z2 * vectorDiameter * vectorDiameter)]; // 4
+    // 25
+    // 4
 }
 ```
 
