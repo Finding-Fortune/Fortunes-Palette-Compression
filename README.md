@@ -48,6 +48,7 @@ void main() {
     std::cout << uncompressedVector[y +  (x * vectorDiameter) +  (z * vectorDiameter * vectorDiameter)];  // 25
     std::cout << uncompressedVector[y2 + (x2 * vectorDiameter) + (z2 * vectorDiameter * vectorDiameter)]; // 4
 }
+```
 
 ## Current Limitations
 - The library currently only supports flat vectors with same-size dimensions.
