@@ -23,7 +23,8 @@ Here's a quick example demonstrating how to use the library:
 
 using namespace Fort;
 
-void main() {
+void main()
+{
     // Create a PaletteCompression instance, passing in the diameter of our vector
     const int vectorDiameter = 64;
     PaletteCompression paletteCompression(vectorDiameter);
@@ -54,6 +55,7 @@ void main() {
 
 ## Current Limitations
 - The library currently only supports flat vectors with same-size dimensions.
+- The library only works in c++. Rust port soon!
 - Future versions might address this and other limitations — **pull requests are welcome!**
 
 ---
