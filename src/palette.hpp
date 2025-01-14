@@ -1,7 +1,6 @@
 #ifndef PALETTE_HPP
 #define PALETTE_HPP
 
-#include <iostream>
 #include <vector>
 #include <map>
 #include <set>
@@ -45,9 +44,7 @@ public:
     vectorDiameter(VectorDiameter), 
     vectorArea(VectorDiameter * VectorDiameter), 
     vectorVolume(VectorDiameter * VectorDiameter * VectorDiameter)
-    {
-        std::cout << "Palette instance created.\n";
-    }
+    { }
 
     void PaletteCompressVector(std::vector<RETURN_TYPE>& uncompressedBlocks)
     {
@@ -123,7 +120,7 @@ public:
         {
             compressedBlocksRef.push_back(currentPackedBlock);
         }
-    } // End 
+    } // End PaletteCompressVector
 
 
 
@@ -143,7 +140,7 @@ public:
             const uint64_t blockData = (packedBlock >> (i * bitBlockSize)) & mask;
 
             if(uncompressedBlocks.size() < maxChunkSize) // If we don't go over our block limit 
-                uncompressedBlocks.push_back(static_cast<uint8_t>(blocks.PaletteToBlockID[blockData]));
+                uncompressedBlocks.push_back(static_cast<RETURN_TYPE>(blocks.PaletteToBlockID[blockData]));
         }
     } // End DecompressVector
 
@@ -171,7 +168,7 @@ public:
 
             return 0; // Return a default or error value if index is out of bounds
         }
-    }
+    } // End GetNum
 
     void SetNum(const uint8_t x, const uint8_t y, const uint8_t z, const RETURN_TYPE newNum)
     {
@@ -196,12 +193,12 @@ public:
             currentPackedBlock |= (packedBlock << bitOffset);
             blocks.compressedBlocks[intIndex] = currentPackedBlock;
         }
-    }
+    } // End SetNum
 
-};
+}; // End PaletteCompression class
 
 
 
-};
+}; // End Fort Namspace
 
 #endif // PALETTE_HPP
