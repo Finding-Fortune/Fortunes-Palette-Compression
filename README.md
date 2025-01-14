@@ -66,5 +66,6 @@ void main()
 
 ## Usage Tips
 - You can change the return type and the type the library decompresses to by changing RETURN_TYPE at the top of the FORT namespace in palette.hpp
+- If your vectorDiameter is N (i.e. 64), you can use GetNum with values between 0 to N-1 (i.e. 0-63) inclusive
 
 ---
