@@ -37,6 +37,10 @@ void main()
     // Now palette compress our uncompressed vector
     paletteCompression.PaletteCompressVector(uncompressedVector);
 
+    // Retrieve our earlier set value, but now in the compressed vector
+    std::cout << paletteCompression.GetNum(x, y, z) << std::endl;
+    // 25
+
     // Modify a value in the still compressed vector to 4
     const int x2 = 12, y2 = 25, z2 = 54;
     paletteCompression.SetNum(x2, y2, z2, 4);
