@@ -37,7 +37,7 @@ void main() {
     paletteCompression.PaletteCompressVector(uncompressedVector);
 
     // Modify a value in the still compressed vector to 4
-    const int x2 = 3, y2 = 7, z2 = 10;
+    const int x2 = 12, y2 = 25, z2 = 54;
     paletteCompression.SetNum(x2, y2, z2, 4);
 
     // Let's uncompress our palette compressed vector
