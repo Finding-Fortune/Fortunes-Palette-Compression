@@ -53,7 +53,7 @@ int main()
     std::cout << "Uncompressed Vector Location (63, 63, 63) value: " << GetNum(uncompressedVector, 63, 63, 63) << std::endl;
     std::cout << std::endl;
 
-    // Now palette compress our vector, passing in our uncompressed vector
+    // Now palette compress our vector, passing in our uncompressed vector's diameter
     paletteCompression.PaletteCompressVector(uncompressedVector);
 
     // Lets check those same values but get them from our palette compressed vector
